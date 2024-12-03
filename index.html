@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante "La Barra Dieciseistres"</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <img src="images.png" alt="Logo del Restaurante" width="100">
+        </div>
+        <h1>"La Barra Dieciseistres"</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#reservaciones">Reservaciones</a></li>
+                <li><a href="agregar_pedidos.html">Agregar Pedidos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Bienvenida -->
+    <section id="bienvenida">
+        <h2>La Barra Dieciseistres</h2>
+        <p>Disfruta de los mejores boneless de Mexicali. ¡Te esperamos!</p>
+    </section>
+
+    <!-- Menú -->
+    <section id="menu">
+        <h2>Nuestro Menú</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Platillo</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="Screenshot 2024-11-20 235724.png" alt="Boneless Cheese Fries" width="100"></td>
+                    <td>Boneless Cheese Fries</td>
+                    <td>600 gramos de papas fritas bañadas en queso, 300 gramos de boneless y aderezo ranch.</td>
+                    <td>$180</td>
+                </tr>
+                <tr>
+                    <td><img src="Screenshot 2024-11-20 235953.png" alt="Boneless" width="100"></td>
+                    <td>La Orden</td>
+                    <td>300 gramos de boneless y papas fritas.</td>
+                    <td>$140</td>
+                </tr>
+                <tr>
+                    <td><img src="Screenshot 2024-11-21 000017.png" alt="Nachos" width="100"></td>
+                    <td>Chipotle Boneless Fries</td>
+                    <td>600 gramos de papas fritas, boneless salsa a elegir y aderezo chipotle.</td>
+                    <td>$180</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Horarios -->
+    <section id="horarios">
+        <h2>Horarios de Atención</h2>
+        <p>Lunes a Viernes: 2:00 PM - 11:00 PM</p>
+        <p>Sábados y Domingos: 2:00 AM - 10:00 PM</p>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form action="#">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required><br><br>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea><br><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Reservaciones -->
+    <section id="reservaciones">
+        <h2>Haz tu Reservación</h2>
+        <p>¡Reserva tu mesa con anticipación y vive una experiencia inolvidable!</p>
+        <a href="reservaciones.html" class="boton-reservar">Ir a Reservaciones</a>
+    </section>
+
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Mexicali La Barra Dieciseistres. Todos los derechos reservados.</p>
+        
+    </footer>
+</body>
+</html>

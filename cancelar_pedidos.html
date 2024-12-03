@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Pedido</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Pedidos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="agregar_pedidos.html">Agregar Pedido</a></li>
+                <li><a href="cancelar_pedidos.html">Cancelar Pedido</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Cancelar Pedido</h2>
+            <form id="formulario-cancelacion">
+                <label for="codigo-pedido">Código del Pedido:</label>
+                <input type="text" id="codigo-pedido" placeholder="Ingresa el código único" required>
+
+                <button type="submit">Cancelar Pedido</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 La Barra Dieciseistres. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('formulario-cancelacion').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const codigoPedido = document.getElementById('codigo-pedido').value;
+
+    if (codigoPedido) {
+        fetch('http://localhost:4000/cancelar-pedido', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ codigo: codigoPedido })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                // Mostrar el error devuelto por el servidor
+                alert(data.error);
+            } else if (data.mensaje) {
+                // Mostrar el mensaje exitoso
+                alert(data.mensaje);
+                // Limpiar el formulario
+                document.getElementById('formulario-cancelacion').reset();
+            } else {
+                // Respuesta inesperada del servidor
+                alert('Respuesta inesperada del servidor.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al cancelar el pedido:', error);
+            alert('Hubo un problema al procesar tu solicitud. Por favor, intenta de nuevo.');
+        });
+    } else {
+        alert('Por favor ingresa el código del pedido.');
+    }
+});
+
+    </script>
+    
+    
+</body>
+</html>

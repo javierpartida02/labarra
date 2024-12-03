@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Pedidos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Pedidos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="agregar_pedidos.html">Agregar Pedido</a></li>
+                <li><a href="cancelar_pedidos.html">Cancelar Pedido</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Agregar Nuevo Pedido</h2>
+            <form id="formulario-pedido" style="display: flex; flex-direction: column;">
+                <div>
+                    <label for="nombre-cliente">Nombre del Cliente:</label>
+                    <input type="text" id="nombre-cliente" required>
+                </div>
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" required>
+                </div>
+                <div>
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" required>                    
+                </div>
+
+                <!-- Contenedor dinámico para platillos -->
+                <div id="platillos-container">
+                    <div class="platillo-item">
+                        <label for="platillo">Platillo:</label>
+                        <select name="platillo" class="platillo" required>
+                            <option value="Boneless Cheese Fries">Boneless Cheese Fries</option>
+                            <option value="La Orden">La Orden</option>
+                            <option value="Chipotle Boneless Fries">Chipotle Boneless Fries</option>
+                        </select>
+
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" name="cantidad" class="cantidad" min="1" required>
+
+                        <button type="button" class="remove-platillo">-</button>
+                    </div>
+                </div>
+                <button type="button" id="add-platillo">+ Agregar Platillo</button>
+
+                <label for="comentarios">Comentarios:</label>
+                <textarea id="comentarios"></textarea>
+
+                <button type="submit">Agregar Pedido</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 La Barra Dieciseistres. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        // Función para agregar un nuevo campo de platillo
+        document.getElementById('add-platillo').addEventListener('click', function() {
+            const container = document.getElementById('platillos-container');
+            
+            const nuevoPlatillo = document.createElement('div');
+            nuevoPlatillo.classList.add('platillo-item');
+            nuevoPlatillo.innerHTML = `
+                <label for="platillo">Platillo:</label>
+                <select name="platillo" class="platillo" required>
+                    <option value="Boneless Cheese Fries">Boneless Cheese Fries</option>
+                    <option value="La Orden">La Orden</option>
+                    <option value="Chipotle Boneless Fries">Chipotle Boneless Fries</option>
+                </select>
+
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" name="cantidad" class="cantidad" min="1" required>
+
+                <button type="button" class="remove-platillo">-</button>
+            `;
+
+            // Agregar funcionalidad de eliminar al botón "-"
+            nuevoPlatillo.querySelector('.remove-platillo').addEventListener('click', function() {
+                container.removeChild(nuevoPlatillo);
+            });
+
+            container.appendChild(nuevoPlatillo);
+        });
+
+        // Función para confirmar y enviar el pedido
+        function confirmarPedido() {
+            const nombreCliente = document.getElementById('nombre-cliente').value;
+            const direccion = document.getElementById('direccion').value;
+            const correo = document.getElementById('correo').value;
+            const comentarios = document.getElementById('comentarios').value;
+
+            // Recopilar todos los platillos y cantidades
+            const platillos = [];
+            document.querySelectorAll('.platillo-item').forEach(item => {
+                const platillo = item.querySelector('.platillo').value;
+                const cantidad = item.querySelector('.cantidad').value;
+                platillos.push({ platillo, cantidad });
+            });
+
+            if (nombreCliente && direccion && correo && platillos.length > 0) {
+                const confirmacion = confirm('¿Estás seguro de agregar este pedido?');
+
+                if (confirmacion) {
+                    // Enviar los datos al servidor
+                    fetch('http://localhost:4000/agregar-pedido', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre_cliente: nombreCliente,
+                            direccion,
+                            correo,
+                            comentarios,
+                            platillos // Enviar lista de platillos
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Pedido agregado exitosamente. Recuerda tu codigo en caso de cancelacion: ' + data.codigo);
+                        // Limpiar el formulario después de agregar el pedido
+                        document.getElementById('formulario-pedido').reset();
+                        document.getElementById('platillos-container').innerHTML = ''; // Reiniciar contenedor de platillos
+                    })
+                    .catch(error => {
+                        console.error('Error al agregar el pedido:', error);
+                    });
+                }
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        }
+
+        // Asignar la función al formulario
+        document.getElementById('formulario-pedido').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevenir el comportamiento por defecto del formulario
+            confirmarPedido();
+        });
+    </script>
+</body>
+</html>
