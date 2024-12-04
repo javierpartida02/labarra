@@ -27,7 +27,7 @@ db.connect(err => {
 
 // Ruta para la página principal
 app.get('/', (req, res) => { 
-    res.sendFile(path.join(__dirname, 'index.html')); 
+    res.sendFile(path.join(__dirname, 'main.html')); 
 });
 
 // Ruta para agregar pedido con múltiples platillos
