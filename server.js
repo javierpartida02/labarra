@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = 4000;
+const port = 51407;
 const mysql = require('mysql2');
+
 
 // Middleware para parsear JSON
 app.use(bodyParser.json());
@@ -13,11 +14,12 @@ app.use(express.static(path.join(__dirname)));
 
 // Configuración de MySQL 
 const db = mysql.createConnection({ 
-    host: 'localhost', 
-    user: 'root',      // Reemplaza con tu usuario de MySQL 
-    password: '1234',  // Reemplaza con tu contraseña de MySQL 
-    database: 'restaurante' 
-}); 
+    host: 'autorack.proxy.rlwy.net', 
+    user: 'root',      
+    password: 'trhKjygWDnafQSMqykOkifLeAmhZThwL',  
+    database: 'railway', 
+    port: 51407
+});
  
 // Conectar a la base de datos 
 db.connect(err => { 
