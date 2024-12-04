@@ -1,3 +1,4 @@
+const {PORT, DB_HOST, }= require ("./config.js")
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -14,11 +15,11 @@ app.use(express.static(path.join(__dirname)));
 
 // Configuración de MySQL 
 const db = mysql.createConnection({ 
-    host: 'autorack.proxy.rlwy.net', 
-    user: 'root',      
-    password: 'trhKjygWDnafQSMqykOkifLeAmhZThwL',  
-    database: 'railway', 
-    port: 51407
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT
 });
  
 // Conectar a la base de datos 
