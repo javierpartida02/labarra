@@ -15,13 +15,14 @@ app.use(express.static(path.join(__dirname)));
 
 // Configuración de MySQL 
 const db = mysql.createConnection({
-    host: 'autorack.proxy.rlwy.net',
-    user: 'root',
-    password: 'trhKjygWDnafQSMqykOkifLeAmhZThwL',
-    database: 'railway',
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_DATABASE,
     port: 51407,
-    connectTimeout: 20000 // Aumenta el tiempo de espera
+    connectTimeout: 20000 // Aumenta a 20 segundos
 });
+
 
 // Conectar a la base de datos 
 db.connect(err => { 
