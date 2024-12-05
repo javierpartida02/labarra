@@ -1,7 +1,7 @@
-const PORT= process.env.PORT || 51407;
-const DB_HOST= process.env.DB_HOST || "autorack.proxy.rlwy.net";
+const PORT= process.env.PORT || 3306
+const DB_HOST= process.env.DB_HOST || "mysql.railway.internal";
 const DB_USER= process.env.DB_USER || "root";
-const DB_PASSWORD= process.env.DB_HOST || "trhKjygWDnafQSMqykOkifLeAmhZThwL";
+const DB_PASSWORD= process.env.DB_PASSWORD || "trhKjygWDnafQSMqykOkifLeAmhZThwL";
 const DB_DATABASE= process.env.DB_DATABASE || "railway";
 
 
