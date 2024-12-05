@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = 51407;
+const port = process.env.PORT || 4000;
 const mysql = require('mysql2');
 
 
