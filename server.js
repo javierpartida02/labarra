@@ -3,8 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 51407;
 const mysql = require('mysql2');
+const cors = require('cors');
+
+
+app.use(cors());
 
 
 // Middleware para parsear JSON
