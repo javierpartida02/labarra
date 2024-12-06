@@ -18,11 +18,11 @@ app.use(express.static(path.join(__dirname)));
 
 // Configuración de MySQL 
 const db = mysql.createConnection({
+    port: DB_PORT,
     host: DB_HOST,
     user: DB_USER,
     password: DB_PASSWORD,
     database: DB_DATABASE,
-    connectTimeout: 20000 // Aumenta a 20 segundos
 });
 
 
