@@ -1,4 +1,4 @@
-const { PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = require('./config.js');
+const {DB_PORT, PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = require('./config.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
