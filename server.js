@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 51407;
 const mysql = require('mysql2');
 const cors = require('cors');
 
@@ -108,7 +107,7 @@ app.post('/cancelar-pedido', (req, res) => {
 });
 
 // Iniciar el servidor
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 
 });
