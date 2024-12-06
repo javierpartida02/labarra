@@ -109,5 +109,6 @@ app.post('/cancelar-pedido', (req, res) => {
 
 // Iniciar el servidor
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:4000`);
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+
 });
