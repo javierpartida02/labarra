@@ -6,9 +6,5 @@ const DB_DATABASE = process.env.DB_DATABASE || "railway";
 connectTimeout: 10000 // Tiempo en milisegundos
 
 module.exports = {
-    PORT,
-    DB_HOST,
-    DB_USER,
-    DB_PASSWORD,
-    DB_DATABASE
+    
 };
