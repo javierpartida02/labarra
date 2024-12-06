@@ -40,7 +40,7 @@
     const codigoPedido = document.getElementById('codigo-pedido').value;
 
     if (codigoPedido) {
-        fetch('https://labarra-production.up.railway.app/cancelar-pedido', {
+        fetch('http://localhost:4000/cancelar-pedido', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
