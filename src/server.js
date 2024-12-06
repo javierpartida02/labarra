@@ -1,3 +1,4 @@
+require('dotenv').config();
 const {DB_PORT, PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE } = require('./config.js');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -5,7 +6,6 @@ const path = require('path');
 const app = express();
 const mysql = require('mysql2');
 const cors = require('cors');
-require('dotenv').config();
 
 
 app.use(cors());
