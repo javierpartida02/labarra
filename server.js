@@ -19,7 +19,6 @@ const db = mysql.createConnection({
     user: DB_USER,
     password: DB_PASSWORD,
     database: DB_DATABASE,
-    port: 51407,
     connectTimeout: 20000 // Aumenta a 20 segundos
 });
 
